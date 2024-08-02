@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 mat-dialog-title>Product Details</h1>
+    <div mat-dialog-content >
+      <p><strong>Name:</strong> {{product.name}}</p>
+      <p><strong>Price:</strong> {{product.price}} DTN</p>
+      <p><strong>Stock availabe currently :</strong> {{product.stock}}</p>
+      <p><strong>Created Date :</strong> {{product.createdDate | date:'yyyy-MM-dd'}}</p>
+      <p><strong>more descriptions:</strong> {{product.description}}</p>
+    </div>
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" (click)="close()">Close</button>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<!-- dialog.component.html -->
+
+<div mat-dialog-content class="dialog-content">
+  <h1 mat-dialog-title>{{formtitle}}</h1>
+  <form [formGroup]="productform">
+    <input formControlName="id" type="hidden" />
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="Name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="Description" placeholder="Description">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="Price" type="number" placeholder="Price">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="Stock" type="number" placeholder="Stock">
+    </mat-form-field>
+  </form>
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" (click)="closeForm()">Close</button>
+    <button mat-raised-button color="primary" (click)="addProduct()" style="margin-left: 8px;">{{ Btn }}</button>
+  </div>
+</div>

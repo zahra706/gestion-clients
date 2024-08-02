@@ -1,0 +1,12 @@
+/* product-form-dialog.component.css */
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Adds space between form fields */
+    padding: 16px; /* Adds padding around the content */
+  }
+  
+  .form-field {
+    width: 100%; /* Ensures the form fields take full width */
+  }
+  
