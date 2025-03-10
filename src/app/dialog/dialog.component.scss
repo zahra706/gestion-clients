@@ -1,12 +1,49 @@
-/* product-form-dialog.component.css */
-.dialog-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* Adds space between form fields */
-    padding: 16px; /* Adds padding around the content */
-  }
-  
-  .form-field {
-    width: 100%; /* Ensures the form fields take full width */
-  }
-  
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacement entre les champs du formulaire */
+  padding: 20px;
+  max-width: 600px; /* Largeur maximale du formulaire */
+}
+
+.form-field {
+  width: 100%;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 30px; /* Augmenter le padding pour les boutons */
+  font-size: 16px; /* Taille de la police du texte */
+  border-radius: 5px; /* Coins arrondis pour les boutons */
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Transition douce pour le survol */
+}
+
+mat-dialog-title {
+  font-size: 24px; /* Taille de la police pour le titre */
+  font-weight: bold;
+  margin-bottom: 20px; /* Espacement sous le titre */
+  color: #2135b0; /* Couleur personnalisée pour le titre */
+}
+
+/* Style pour le bouton Cancel */
+button.mat-button.cancel-btn {
+  background-color: #ff6b6b; /* Couleur du bouton Cancel */
+  color: white;
+  width: 150px; /* Largeur fixe du bouton Cancel */
+}
+
+button.mat-button.cancel-btn:hover {
+  background-color: #ff4f4f; /* Couleur au survol pour Cancel */
+}
+
+/* Style pour le bouton Save */
+button.mat-button.save-btn {
+  background-color: #2f00ff; /* Couleur du bouton Save */
+  color: white;
+  width: 150px; /* Largeur fixe du bouton Save */
+}
+
+button.mat-button.save-btn:hover {
+  background-color: #1c00b3; /* Couleur au survol pour Save */
+}

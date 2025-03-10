@@ -1,0 +1,159 @@
+
+
+<!-- app.component.html -->
+<div class="container">
+  <div style="margin-top: 10px;">
+    <mat-form-field style="width: 100%;">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field><button mat-raised-button color="warn" (click)="openDialog()">Add Client</button>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+        <!-- Nom Column -->
+        <ng-container matColumnDef="Nom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+          <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
+        </ng-container>
+        <!-- Prenom Column -->
+        <ng-container matColumnDef="Prenom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </th>
+          <td mat-cell *matCellDef="let row"> {{row.prenom}} </td>
+        </ng-container>
+        <!-- Adresse Column -->
+        <ng-container matColumnDef="Adresse">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+          <td mat-cell *matCellDef="let row"> {{row.adresse}} </td>
+        </ng-container>
+        <!-- CIN Column -->
+        <ng-container matColumnDef="CIN">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CIN </th>
+          <td mat-cell *matCellDef="let row"> {{row.cin}} </td>
+        </ng-container>
+        <!-- Telephone Column -->
+        <ng-container matColumnDef="Telephone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Telephone </th>
+          <td mat-cell *matCellDef="let row"> {{row.telephone}} </td>
+        </ng-container>
+        <!-- Email Column -->
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container>
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row"> 
+            <button mat-icon-button color="warn" (click)="deleteClient(row.id)"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="primary" (click)="updateClient(row)"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="yellow" (click)="viewClient(row)"><mat-icon>visibility</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- No Data Row -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Style pour la barre d'outils */
+  .custom-toolbar {
+    background-color: #2f00ff !important; /* Couleur de fond rose pour la toolbar */
+    color: #ffffff; /* Texte blanc */
+  }
+
+  .example-icon {
+    color: #fff; /* Icône blanche */
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  /* Style pour le bouton "Add Client" */
+  .custom-toolbar mat-raised-button {
+    background-color: #ff6b6b; /* Couleur d'arrière-plan pour le bouton */
+    color: #ffffff; /* Texte blanc */
+    font-weight: bold;
+  }
+
+  .custom-toolbar mat-raised-button:hover {
+    background-color: #ff4f4f; /* Couleur plus foncée au survol */
+  }
+
+  /* Style pour la table */
+  .mat-table {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Style pour les en-têtes de colonne */
+  .mat-header-cell {
+    background-color: #f1f1f1;
+    color: #2135b0; /* Couleur bleue pour les titres */
+    font-weight: bold;
+  }
+
+  /* Style pour les cellules de la table */
+  .mat-cell {
+    background-color: #2c2c2c; /* Fond sombre pour les cellules */
+    color: #ffffff; /* Texte blanc */
+  }
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Adds space between form fields */
+    padding: 16px; /* Adds padding around the content */
+  }
+  
+  .form-field {
+    width: 100%; /* Ensures the form fields take full width */
+  }.custom-dialog .mat-dialog-content {
+    padding: 20px;  /* Ajoute du padding autour du contenu de la boîte de dialogue */
+  }
+  .custom-dialog .mat-dialog-content {
+    padding: 20px; /* Ajouter de l'espace autour des éléments à l'intérieur de la boîte de dialogue */
+  }
+  
+  .custom-dialog .mat-form-field,
+  .custom-dialog button {
+    margin-bottom: 15px; /* Ajouter de l'espace entre les éléments du formulaire et les boutons */
+  }
+  
+  .custom-dialog .mat-dialog-container {
+    border-radius: 8px;  /* Bords arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+  }
+  
+  /* Style pour les boutons d'action */
+  .mat-icon-button {
+    color: white;
+    transition: transform 0.2s;
+  }
+
+  .mat-icon-button:hover {
+    transform: scale(1.1); /* Agrandir légèrement au survol */
+  }
+
+  /* Style pour le formulaire de filtre */
+  .container mat-form-field {
+    width: 100%;
+  }
+
+  .mat-paginator {
+    margin-top: 20px;
+  }
+
+  /* Style pour les lignes sans données */
+  .mat-row.mat-no-data {
+    color: #ff6b6b; /* Couleur rouge pour les lignes sans données */
+  }
+</style>

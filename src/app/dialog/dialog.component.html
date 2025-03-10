@@ -1,28 +1,30 @@
-<!-- dialog.component.html -->
+<h1 mat-dialog-title>{{ formTitle }}</h1>
+<form [formGroup]="clientForm" class="form-container">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Prenom</mat-label>
+    <input matInput formControlName="prenom" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Adresse</mat-label>
+    <input matInput formControlName="adresse" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>CIN</mat-label>
+    <input matInput formControlName="CIN" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Telephone</mat-label>
+    <input matInput formControlName="telephone" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+  <button mat-button (click)="closeForm()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()">{{ btnText }}</button>
+</form>
 
-<div mat-dialog-content class="dialog-content">
-  <h1 mat-dialog-title>{{formtitle}}</h1>
-  <form [formGroup]="productform">
-    <input formControlName="id" type="hidden" />
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="Name" placeholder="Name">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Description</mat-label>
-      <input matInput formControlName="Description" placeholder="Description">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Price</mat-label>
-      <input matInput formControlName="Price" type="number" placeholder="Price">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Stock</mat-label>
-      <input matInput formControlName="Stock" type="number" placeholder="Stock">
-    </mat-form-field>
-  </form>
-  <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" (click)="closeForm()">Close</button>
-    <button mat-raised-button color="primary" (click)="addProduct()" style="margin-left: 8px;">{{ Btn }}</button>
-  </div>
-</div>

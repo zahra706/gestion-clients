@@ -1,17 +1,105 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  .container{
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+
+
+
+/* Black background wrapper */
+.black-background {
+  background-color: black; /* Black background */
+  min-height: calc(100vh - 64px); /* Cover the entire viewport height minus toolbar */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+/* Your existing styles (unchanged) */
+.welcome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  height: calc(80vh - 64px); /* Smaller height (80% of viewport height minus toolbar) */
+  margin: 20px auto;
+  max-width: 600px; /* Smaller width for the card */
+  padding: 16px;
+}
+
+mat-card {
+  width: 125%; /* Take up full width of the container */
+  height: 100%; /* Take up full height of the container */
+  text-align: center;
+  box-shadow: 0 25px 20px rgba(97, 96, 96, 0.2); /* Stronger shadow */
+  border-radius: 12px; /* Slightly larger rounded corners */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  background-color: #1f1f1f; /* Dark card background */
+  color: #ffffff; /* White text for contrast */
+}
+
+mat-card-content {
+  padding: 24px; /* More padding for better spacing */
+}
+
+mat-card-content h2 {
+  margin: 0;
+  font-size: 28px; /* Slightly larger font size */
+  color: #2959ba; /* Primary color for dark theme */
+}
+
+mat-card-content p {
+  margin: 12px 0 0;
+  font-size: 18px; /* Slightly larger font size */
+  color: #a0a0a0; /* Secondary text color for dark theme */
+}
+
+/* Login Button */
+.login-button {
+  margin-top: 24px; /* Espacement au-dessus du bouton */
+  width: 100%; /* Largeur de 100% pour s'adapter au conteneur */
+  max-width: 200px; /* Largeur maximale augmentée */
+  padding: 16px; /* Plus de padding pour agrandir le bouton */
+  font-size: 18px; /* Taille de police augmentée */
+  font-weight: bold;
+  background-color: #0f376f; /* Couleur de fond */
+  color: #ffffff; /* Texte blanc pour un meilleur contraste */
+  border: none;
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 4px rgba(72, 119, 147, 0.2); /* Ombre portée */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animation de transition */
+}
+
+
+
+.login-button:hover {
+  background-color: #67ea8e; /* Slightly darker shade for hover effect */
+}
+/* Style pour l'icône animée */
+.moving-icon {
+  width: 250px; /* Réduire la largeur de l'image */
+  height: auto; /* Conserve le ratio de l'image */
+  margin-top: 0px; /* Espacement au-dessus de l'image */
+  display: block; /* Pour centrer l'image */
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Style pour l'icône personnalisée */
+/* Style pour l'icône personnalisée dans la toolbar */
+.custom-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Taille de l'icône */
+  height: 40px; /* Taille de l'icône */
+  border-radius: 50%; /* Rendre l'icône ronde */
+  overflow: hidden; /* Masquer les bords de l'image */
+  background-color: #ffffff; /* Fond blanc pour l'icône */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre portée */
+}
+
+/* Style pour l'image à l'intérieur de l'icône */
+.custom-icon img {
+  width: 100%; /* Remplir l'icône */
+  height: 100%; /* Remplir l'icône */
+  object-fit: cover; /* Ajuster l'image sans déformation */
+}
+

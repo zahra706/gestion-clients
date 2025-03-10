@@ -1,0 +1,60 @@
+/* Style pour le conteneur du profil utilisateur */
+.profile-container {
+  background-color: #1f1f1f; /* Fond sombre */
+  padding: 40px;
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Ombre portée */
+  max-width: 500px; /* Largeur maximale du conteneur */
+  width: 100%;
+  margin: 40px auto; /* Centrer horizontalement et un peu d'espace au-dessus */
+  text-align: center; /* Centrer le texte */
+}
+
+/* Style pour le titre du profil utilisateur */
+.profile-container h2 {
+  color: #2135b0; /* Couleur violette pour le titre */
+  font-size: 30px;
+  margin-bottom: 24px;
+}
+
+/* Style pour les informations du profil */
+.profile-container p {
+  color: #ffffff; /* Texte blanc */
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* Style pour les labels des informations du profil */
+.profile-container strong {
+  color: #1849bb; /* Couleur bleue pour les labels */
+}
+
+/* Style pour les boutons */
+.profile-container button, .profile-container a.button-style {
+  width: 100%;
+  padding: 12px;
+  background-color: #1849bb; /* Fond violet */
+  color: #121212; /* Texte sombre */
+  border: none;
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animation de transition */
+  text-decoration: none; /* Supprimer le soulignement pour les liens */
+  display: inline-block;
+  margin-top: 24px; /* Espace entre les éléments */
+}
+
+/* Hover effect pour le bouton */
+.profile-container button:hover, .profile-container a.button-style:hover {
+  background-color: #677cd1; /* Fond violet plus foncé au survol */
+}
+
+/* Style pour le message quand aucun utilisateur n'est trouvé */
+.profile-container .no-user-message {
+  color: #ff6b6b; /* Couleur rouge pour le message d'absence */
+  font-size: 16px;
+  margin-top: 16px;
+  font-weight: bold;
+}

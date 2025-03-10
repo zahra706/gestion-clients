@@ -1,108 +1,87 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { Product } from '../model/Product';
-import { ProductService } from '../service/product.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
+import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
+import { MatInputModule } from '@angular/material/input'; // Import MatInputModule
+import { MatButtonModule } from '@angular/material/button'; // Import MatButtonModule
+import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
+import { ClientService } from '../service/client.service';
+import { Client } from '../model/Client';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-dialog',
-  standalone: true,
+  standalone: true, // Mark as standalone
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatDialogModule,
     MatFormFieldModule,
-    MatIconModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule,
-    FormsModule
+    MatIconModule,
   ],
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'], // Fixed styleUrls here
-  providers: [ProductService]
+  styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-  productform!: FormGroup;
-  Btn: string = 'Save';
-  formtitle:string="Product Form"
-  product!:any;
-  id!:string;
+  clientForm!: FormGroup;
+  btnText: string = 'Save';
+  formTitle: string = 'Client Form';
+
   constructor(
-    private formbuilder: FormBuilder,
-    private productService: ProductService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef: MatDialogRef<DialogComponent>,
-    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private clientService: ClientService,
+    @Inject(MAT_DIALOG_DATA) public editData: Client,
+    private dialogRef: MatDialogRef<DialogComponent>
   ) {}
 
   ngOnInit(): void {
-    this.productform = this.formbuilder.group({
-      id:[''],
-      Name: ['', Validators.required],
-      Description: ['', Validators.required],
-      Price: ['', Validators.required],
-      Stock: ['', Validators.required],
+    this.clientForm = this.fb.group({
+      id: [''],
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      adresse: ['', Validators.required],
+      CIN: ['', Validators.required],
+      telephone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     });
-    this.id = this.route.snapshot.paramMap.get('id') || '';
+
     if (this.editData) {
-      this.Btn = 'Update';
-      this.formtitle="Edit Product Form"
-      this.productform.patchValue({
-        id: this.editData.id,
-        Name: this.editData.name,
-        Description: this.editData.description,
-        Price: this.editData.price,
-        Stock: this.editData.stock,
-      });
+      this.btnText = 'Update';
+      this.formTitle = 'Edit Client Form';
+      this.clientForm.patchValue(this.editData);
     }
   }
 
-  addProduct() {
-    if (!this.editData) {
-      if (this.productform.valid) {
-        this.productService.addProduct(this.productform.value).subscribe({
-          next: (res) => {
-            alert('Product added successfully');
-            this.productform.reset();
+  onSubmit(): void {
+    if (this.clientForm.valid) {
+      const clientData = this.clientForm.value;
+      if (this.editData) {
+        this.clientService.updateClient(clientData).subscribe({
+          next: () => {
+            alert('Client updated successfully');
+            this.dialogRef.close('update');
+          },
+          error: () => {
+            alert('Error updating client');
+          }
+        });
+      } else {
+        this.clientService.addClient(clientData).subscribe({
+          next: () => {
+            alert('Client added successfully');
             this.dialogRef.close('save');
           },
           error: () => {
-            alert('Error adding product');
+            alert('Error adding client');
           }
         });
       }
-    } else {
-      this.updateProduct();
     }
   }
 
-  updateProduct(): void {
-    if (this.productform.valid) {
-      const updatedProduct = this.productform.value;
-      console.log('Updating product with data:', updatedProduct);
-      this.productService.updateProduct(updatedProduct).subscribe(
-        response => {
-          console.log('Update response:', response);
-          if (response.status === 200) {
-            alert('Product updated successfully');
-            this.productform.reset();
-            this.dialogRef.close('update');
-          } else {
-            alert(`Error updating product: ${response.fail_Messages}`);
-          }
-        },
-        error => {
-          console.error('Error updating product:', error);
-          alert('Error updating product: ' + error);
-        }
-      );
-    }
-  }
-
-  closeForm() {
+  closeForm(): void {
     this.dialogRef.close();
   }
 }

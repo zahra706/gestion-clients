@@ -1,0 +1,72 @@
+<!-- Profile Component HTML -->
+<div *ngIf="user; else noUser" class="profile-container">
+  <h2>Profil Utilisateur</h2>
+  <p><strong>Nom:</strong> {{ user.name }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Position:</strong> {{ user.position }}</p>
+  <button (click)="logout()">Se Déconnecter</button>
+  <a href="/client-management" class="button-style">Travailler sur la gestion de clients</a>
+</div>
+
+<ng-template #noUser>
+  <p>Profil utilisateur non disponible.</p>
+</ng-template>
+
+<!-- Style CSS intégré directement dans le HTML -->
+<style>
+  .profile-container {
+    background-color: #1f1f1f;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .profile-container h2 {
+    color: #2135b0;
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  .profile-container p {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .profile-container strong {
+    color: #1849bb;
+  }
+
+  .profile-container button,
+  .profile-container a.button-style {
+    width: 100%;
+    padding: 12px;
+    background-color: #1849bb;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 24px;
+  }
+
+  .profile-container button:hover,
+  .profile-container a.button-style:hover {
+    background-color: #677cd1;
+  }
+
+  .profile-container .no-user-message {
+    color: #ff6b6b;
+    font-size: 16px;
+    margin-top: 16px;
+    font-weight: bold;
+  }
+</style>

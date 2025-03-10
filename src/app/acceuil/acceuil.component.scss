@@ -1,0 +1,96 @@
+/* Black background wrapper */
+.black-background {
+    background-color: black;
+    min-height: 100vh; /* Ensure it covers the entire height of the viewport */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: flex-start; /* Keep the content at the top */
+    padding: 20px;
+}
+
+/* Welcome card and button styles */
+.welcome-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(80vh - 64px); /* Smaller height (80% of viewport height minus toolbar) */
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 16px;
+}
+
+mat-card {
+    width: 125%;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 25px 20px rgba(97, 96, 96, 0.2);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+mat-card-content {
+    padding: 24px;
+}
+
+mat-card-content h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #2959ba;
+}
+
+mat-card-content p {
+    margin: 12px 0 0;
+    font-size: 18px;
+    color: #a0a0a0;
+}
+
+/* Login Button */
+.login-button {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 200px;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #0f376f;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(72, 119, 147, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #67ea8e;
+}
+
+/* Moving Icon */
+.moving-icon {
+    width: 250px;
+    height: auto;
+    margin-top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Copyright Section */
+.copyright {
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 14px;
+    margin-top: 100px; /* Increased space above the copyright */
+    margin-bottom: 20px; /* Space from the bottom */
+}
+
+.copyright p {
+    font-weight: 300;
+    opacity: 0.7;
+    margin: 0;
+}

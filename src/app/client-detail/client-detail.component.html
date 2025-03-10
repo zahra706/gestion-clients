@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 mat-dialog-title>Client Details</h1>
+    <div mat-dialog-content >
+      <p><strong>Nom:</strong> {{client.nom}}</p>
+      <p><strong>Prenom:</strong> {{client.prenom}} </p>
+      <p><strong>Adresse :</strong> {{client.adresse}}</p>
+      <p><strong>CIN :</strong> {{client.cin}}</p>
+      <p><strong>Telephone:</strong> {{client.telephone}}</p>
+      <p><strong>Email :</strong> {{client.email}}</p>
+    </div>
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" (click)="close()">Close</button>
+    </div>
+</div>
+

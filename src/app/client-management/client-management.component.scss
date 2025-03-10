@@ -1,0 +1,26 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Adds space between form fields */
+    padding: 16px; /* Adds padding around the content */
+  }
+  
+  .form-field {
+    width: 100%; /* Ensures the form fields take full width */
+  }.custom-dialog .mat-dialog-content {
+    padding: 20px;  /* Ajoute du padding autour du contenu de la boîte de dialogue */
+  }
+  .custom-dialog .mat-dialog-content {
+    padding: 20px; /* Ajouter de l'espace autour des éléments à l'intérieur de la boîte de dialogue */
+  }
+  
+  .custom-dialog .mat-form-field,
+  .custom-dialog button {
+    margin-bottom: 15px; /* Ajouter de l'espace entre les éléments du formulaire et les boutons */
+  }
+  
+  .custom-dialog .mat-dialog-container {
+    border-radius: 8px;  /* Bords arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+  }
+  

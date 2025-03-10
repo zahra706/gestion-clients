@@ -1,68 +1,14 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>supervised_user_circle</mat-icon>
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button aria-label="Menu icon">
+    <mat-icon class="custom-icon">
+      <img src="https://media.licdn.com/dms/image/v2/D4D0BAQFY1J4AxH5qWQ/company-logo_200_200/company-logo_200_200/0/1705561846731/addinn_logo?e=2147483647&v=beta&t=2MVZNUtXkXXs8yhfH0H6WX8jzM3dFuYGqQjHe7rmkNo" alt="Logo Addinn">
+    </mat-icon>
   </button>
-  <span>Product Management Dashboard</span>
-  <span class="example-spacer"></span>
- <button   mat-raised-button color="warn" (click)="openDialog()">Add Product</button>
+  <span>  {{ title }}</span>
+  <span class="spacer"></span>
 </mat-toolbar>
 
-<!-- app.component.html -->
-<div class="container ">
-  <div style="margin-top: 10px;">
-    <mat-form-field style="width: 100%;">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)"  #input>
-    </mat-form-field>
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="Name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-        </ng-container>
-
-        <!-- Description Column -->
-        <ng-container matColumnDef="Description">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-          <td mat-cell *matCellDef="let row"> {{row.description}} </td>
-        </ng-container>
-
-        <!-- Price Column -->
-        <ng-container matColumnDef="Price">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.price}} </td>
-        </ng-container>
-
-        <!-- Stock Column -->
-        <ng-container matColumnDef="Stock">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock </th>
-          <td mat-cell *matCellDef="let row"> {{row.stock}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Action" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-          <td mat-cell *matCellDef="let row"> 
-            <button   mat-icon-button color="warn" (click)="deleteProduct(row.id)"><mat-icon>delete</mat-icon></button>
-            <button   mat-icon-button color="primary" (click)="updateProduct(row)"><mat-icon>edit</mat-icon></button>
-            <button   mat-icon-button color="yellow" (click)="viewProduct(row)"><mat-icon>visibility</mat-icon></button>
-             </td>
-        </ng-container>
-
-        <!-- Header and Row Definitions -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        <!-- No Data Row -->
-        <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-        </tr>
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-    </div>
-  </div>
-</div>
-
-
-
+<!-- Router Outlet -->
+<router-outlet></router-outlet>
